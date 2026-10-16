@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - XcelUP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #F5F0EB;
+      --paper: #FFFFFF;
+      --paper-warm: #FAF6F0;
+      --ink: #1C1917;
+      --ink-soft: #44403C;
+      --ink-muted: #78716C;
+      --ink-faint: #A8A29E;
+      --border: #E7E1D9;
+      --primary: #B45309;
+      --primary-soft: rgba(180, 83, 9, 0.08);
+      --primary-strong: #92400E;
+      --success: #059669;
+      --indigo: #6366F1;
+      --warning: #D97706;
+      --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.04);
+      --shadow-md: 0 6px 18px rgba(28, 25, 23, 0.06);
+      --shadow-lg: 0 14px 36px rgba(28, 25, 23, 0.10);
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-body: 'Bricolage Grotesque', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #FEF3C7; color: var(--ink); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(180,83,9,.15); border-radius: 4px; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 80px 0 56px;
+      background: linear-gradient(180deg, var(--paper-warm) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(180,83,9,.10), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner { text-align: center; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .hero h1 em { font-style: italic; color: var(--primary); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    /* ─── SEARCH BAR ─── */
+    .search-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-wrap i.fa-search {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-faint);
+      font-size: 16px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 18px 56px 18px 56px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: var(--paper);
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--ink);
+      box-shadow: var(--shadow-md);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      outline: none;
+    }
+    .search-input::placeholder { color: var(--ink-faint); }
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.10), var(--shadow-md);
+    }
+    .search-clear {
+      position: absolute;
+      right: 18px; top: 50%; transform: translateY(-50%);
+      background: var(--paper-warm);
+      color: var(--ink-muted);
+      border: 1px solid var(--border);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: none;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    .search-clear.show { display: inline-flex; }
+    .search-suggestions {
+      margin-top: 18px;
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+      font-size: 12px;
+    }
+    .search-suggestions span { color: var(--ink-faint); }
+    .search-suggestions a {
+      padding: 5px 12px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-weight: 500;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .search-suggestions a:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ─── SECTION HEADINGS ─── */
+    section.block { padding: 64px 0; }
+    .block-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+    .block-head h2 { font-size: 28px; margin: 0; line-height: 1.2; }
+    .block-head h2 .accent { color: var(--primary); }
+    .block-head p { margin: 4px 0 0; color: var(--ink-muted); font-size: 14px; }
+
+    /* ─── QUICK ACTIONS ─── */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .quick-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: transform 0.15s ease, box-shadow 0.18s ease, border-color 0.15s ease;
+      position: relative;
+    }
+    .quick-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+    .quick-icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .quick-body { flex: 1; min-width: 0; }
+    .quick-title {
+      font-family: var(--font-display);
+      font-size: 16px; font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 2px;
+      line-height: 1.3;
+    }
+    .quick-meta { font-size: 12px; color: var(--ink-muted); }
+    .quick-arrow {
+      color: var(--ink-faint); font-size: 13px;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .quick-card:hover .quick-arrow { color: var(--primary); transform: translateX(2px); }
+
+    /* ─── BROWSE BY TOPIC ─── */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .topic-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.15s;
+      position: relative;
+      text-align: left;
+      display: block;
+    }
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .topic-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+    .topic-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0 0 6px; line-height: 1.3; }
+    .topic-desc { font-size: 13.5px; color: var(--ink-muted); line-height: 1.5; margin: 0 0 14px; }
+    .topic-meta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ─── FAQ ACCORDION ─── */
+    .faq-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .faq-item {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.15s, box-shadow 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(180, 83, 9, 0.3); }
+    .faq-item.open { border-color: var(--primary); box-shadow: var(--shadow-sm); }
+    .faq-q {
+      width: 100%;
+      padding: 18px 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .faq-q-icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      transition: transform 0.25s ease, background 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-q-icon {
+      transform: rotate(45deg);
+      background: var(--primary);
+      color: white;
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(.22,1,.36,1), padding 0.25s ease;
+      padding: 0 22px;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a {
+      padding: 0 22px 22px;
+      max-height: 1200px;
+    }
+    .faq-a ul { padding-left: 22px; margin: 8px 0; }
+    .faq-a li { margin-bottom: 4px; }
+    .faq-a strong { color: var(--ink); font-weight: 600; }
+    .faq-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--paper-warm);
+      color: var(--ink-muted);
+      margin-right: 10px;
+    }
+
+    /* ─── EMPTY STATE ─── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--ink-muted);
+      display: none;
+    }
+    .empty-state.show { display: block; }
+    .empty-state i { font-size: 36px; color: var(--ink-faint); margin-bottom: 14px; display: block; }
+
+    /* ─── CONTACT PANELS ─── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .contact-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      text-align: left;
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.15s;
+    }
+    .contact-card:hover {
+      transform: translateY(-3px); box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .contact-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .contact-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0 0 6px; }
+    .contact-desc { font-size: 13.5px; color: var(--ink-muted); margin: 0 0 16px; line-height: 1.5; }
+    .contact-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .contact-cta:hover { background: var(--primary); transform: translateY(-1px); }
+    .contact-cta.outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+    .contact-cta.outline:hover { border-color: var(--primary); color: var(--primary); background: transparent; }
+
+    /* ─── RESOURCES STRIP ─── */
+    .resources {
+      background: var(--paper);
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .resource-list {
+      display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; align-items: center;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .resource-list a {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--ink-soft);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .resource-list a:hover { color: var(--primary); }
+    .resource-list a i { color: var(--ink-faint); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 720px) {
+      .hero { padding: 56px 0 40px; }
+      .hero h1 { font-size: 32px; }
+      .hero-sub { font-size: 15px; }
+      .search-input { padding: 14px 50px 14px 50px; font-size: 15px; }
+      section.block { padding: 44px 0; }
+      .block-head h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ STATIC HEADER (paste after <body>) ═══ -->
+<style>
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,235,.92);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border-bottom:1px solid rgba(28,25,23,.08);font-family:'Bricolage Grotesque',-apple-system,sans-serif}
+  .site-nav-in{max-width:1320px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .site-nav-brand{display:flex;align-items:center;gap:10px;color:#1C1917;text-decoration:none}
+  .site-nav-brand img{height:30px;width:30px;border-radius:8px}
+  .site-nav-logo{display:flex;flex-direction:column;gap:1px}
+  .site-nav-logo .name{font-weight:700;font-size:15px;color:#1C1917;display:flex;align-items:center;gap:8px}
+  .site-nav-logo .patent{font-size:10px;color:#A8A29E;font-weight:500}
+  .site-nav-logo .tag{font-size:10px;font-weight:600;color:#78716C;line-height:1.2;white-space:nowrap}
+  .site-nav-links{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600}
+  .site-nav-links a{color:#78716C;padding:7px 14px;border-radius:8px;text-decoration:none;transition:all .2s}
+  .site-nav-links a:hover{color:#1C1917;background:rgba(28,25,23,.04)}
+  .site-nav-cta{padding:8px 16px !important;border-radius:8px;background:#1C1917;color:#fff !important;transition:all .2s}
+  .site-nav-cta:hover{background:#292524 !important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+  .site-nav-burger{display:none;background:none;border:none;font-size:22px;color:#1C1917;cursor:pointer;padding:6px}
+  @media(max-width:768px){
+    .site-nav-logo .tag{display:none}
+    .site-nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:#F5F0EB;flex-direction:column;padding:20px;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.1);border-top:1px solid rgba(28,25,23,.08)}
+    .site-nav-links.open{display:flex}
+    .site-nav-links a{width:100%;padding:12px 14px;text-align:left}
+    .site-nav-burger{display:block}
+  }
+</style>
+
+<nav class="site-nav">
+  <div class="site-nav-in">
+    <a href="/" class="site-nav-brand">
+      <img src="/images/XcelUP.png" alt="XcelUP logo">
+      <div class="site-nav-logo">
+        <span class="name">XcelUP <span class="patent">Patent Pending</span></span>
+        <span class="tag">Innovation is no longer the bottleneck. Adoption is.&trade;</span>
+      </div>
+    </a>
+    <div class="site-nav-links" id="siteNavLinks">
+      <a href="/about-xcelup">About</a>
+      <a href="/careers">Careers</a>
+      <a href="/help">Help</a>
+      <a href="/contact" class="site-nav-cta">Request a Demo</a>
+    </div>
+    <button class="site-nav-burger" onclick="document.getElementById('siteNavLinks').classList.toggle('open')" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+<!-- Spacer so content doesn't hide under fixed nav -->
+<div style="height:60px"></div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="hero-eyebrow"><i class="fas fa-life-ring"></i> Help Center</span>
+      <h1>How can we <em>help</em> today?</h1>
+      <p class="hero-sub">Search the knowledge base, browse common topics, or talk to our team. We're here to make sure XcelUP works for you.</p>
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input id="helpSearch" class="search-input" type="text" placeholder="Try “generate a learning path” or “publish to my org”" autocomplete="off" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="search-suggestions">
+        <span>Popular:</span>
+        <a href="#" data-suggest="learning path">Learning paths</a>
+        <a href="#" data-suggest="xeva">Xeva AI tutor</a>
+        <a href="#" data-suggest="career coach">AI Career Coach</a>
+        <a href="#" data-suggest="credential">Skill credentials</a>
+        <a href="#" data-suggest="sharepoint">Connect SharePoint</a>
+        <a href="#" data-suggest="subscription">Subscription &amp; billing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ QUICK ACTIONS ═══════════ -->
+  <section class="block">
+    <div class="container">
+      <div class="block-head">
+        <div>
+          <h2><span class="accent">Quick</span> actions</h2>
+          <p>The most common things people come here to do.</p>
+        </div>
+      </div>
+      <div class="quick-grid" id="quickGrid">
+        <a href="/contact" class="quick-card" data-search="generate create new learning path ai prompt curriculum">
+          <span class="quick-icon" style="background:rgba(180,83,9,.10);color:var(--primary);"><i class="fas fa-wand-magic-sparkles"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Generate a learning path</div>
+            <div class="quick-meta">From a topic prompt to ready content in minutes</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="dashboard navigate platform overview start">
+          <span class="quick-icon" style="background:rgba(99,102,241,.10);color:var(--indigo);"><i class="fas fa-house"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Tour your dashboard</div>
+            <div class="quick-meta">Find paths, progress, and quick actions</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="xeva ai tutor teach me ask question voice">
+          <span class="quick-icon" style="background:rgba(180,83,9,.10);color:var(--primary);"><i class="fas fa-graduation-cap"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Use Xeva, the AI tutor</div>
+            <div class="quick-meta">Teach Me, voice Q&amp;A, multilingual chat</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="quiz attempt skill credential pass score certificate">
+          <span class="quick-icon" style="background:rgba(5,150,105,.10);color:var(--success);"><i class="fas fa-trophy"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Earn a skill credential</div>
+            <div class="quick-meta">Pass quizzes, get a verifiable badge</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="ai career coach trajectory recommendation aspiration growth">
+          <span class="quick-icon" style="background:rgba(5,150,105,.10);color:var(--success);"><i class="fas fa-bullseye"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Plan your career path</div>
+            <div class="quick-meta">AI Career Coach + Resume / Role Fit</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="interview ready mock practice prepare promotion role">
+          <span class="quick-icon" style="background:rgba(99,102,241,.10);color:var(--indigo);"><i class="fas fa-comments"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Practice for interviews</div>
+            <div class="quick-meta">AI-driven mock interviews with feedback</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="profile account settings password email name picture">
+          <span class="quick-icon" style="background:rgba(28,25,23,.06);color:var(--ink);"><i class="fas fa-user-gear"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Update your profile</div>
+            <div class="quick-meta">Name, language, password, picture</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+        <a href="/contact" class="quick-card" data-search="subscription billing upgrade plan price token balance buy">
+          <span class="quick-icon" style="background:rgba(217,119,6,.10);color:var(--warning);"><i class="fas fa-credit-card"></i></span>
+          <div class="quick-body">
+            <div class="quick-title">Manage your subscription</div>
+            <div class="quick-meta">Plans, billing, token balance</div>
+          </div>
+          <i class="fas fa-arrow-right quick-arrow"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BROWSE BY TOPIC ═══════════ -->
+  <section class="block" style="padding-top:0;">
+    <div class="container">
+      <div class="block-head">
+        <div>
+          <h2>Browse by <span class="accent">topic</span></h2>
+          <p>Click a topic to jump to its FAQs below.</p>
+        </div>
+      </div>
+      <div class="topic-grid">
+        <a href="#cat-getting-started" class="topic-card" data-jump="cat-getting-started">
+          <div class="topic-icon" style="background:rgba(180,83,9,.10);color:var(--primary);"><i class="fas fa-rocket"></i></div>
+          <h3 class="topic-title">Getting Started</h3>
+          <p class="topic-desc">Learn how to set up your account and begin your learning journey</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-platform" class="topic-card" data-jump="cat-platform">
+          <div class="topic-icon" style="background:rgba(99,102,241,.10);color:var(--indigo);"><i class="fas fa-laptop-code"></i></div>
+          <h3 class="topic-title">Platform Features</h3>
+          <p class="topic-desc">Discover how to make the most of XcelUP’s powerful tools</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-xeva" class="topic-card" data-jump="cat-xeva">
+          <div class="topic-icon" style="background:rgba(180,83,9,.10);color:var(--primary);"><i class="fas fa-graduation-cap"></i></div>
+          <h3 class="topic-title">Xeva AI tutor</h3>
+          <p class="topic-desc">Teach Me, voice Q&amp;A, the always-on chatbot, and how Xeva grounds answers in your knowledge.</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-talent" class="topic-card" data-jump="cat-talent">
+          <div class="topic-icon" style="background:rgba(5,150,105,.10);color:var(--success);"><i class="fas fa-bullseye"></i></div>
+          <h3 class="topic-title">Talent intelligence</h3>
+          <p class="topic-desc">AI Career Coach, Resume Fit, Role Fit, and Interview Ready — see where people stand and coach them where they're going.</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-trainers" class="topic-card" data-jump="cat-trainers">
+          <div class="topic-icon" style="background:rgba(5,150,105,.10);color:var(--success);"><i class="fas fa-chalkboard-user"></i></div>
+          <h3 class="topic-title">Trainers &amp; classrooms</h3>
+          <p class="topic-desc">Publishing paths, scheduling live sessions, exporting PDFs, and connecting SharePoint.</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-account" class="topic-card" data-jump="cat-account">
+          <div class="topic-icon" style="background:rgba(28,25,23,.06);color:var(--ink);"><i class="fas fa-user-gear"></i></div>
+          <h3 class="topic-title">Account &amp; Billing</h3>
+          <p class="topic-desc">Manage your account settings and subscription details</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="#cat-billing" class="topic-card" data-jump="cat-billing">
+          <div class="topic-icon" style="background:rgba(217,119,6,.10);color:var(--warning);"><i class="fas fa-credit-card"></i></div>
+          <h3 class="topic-title">Billing &amp; tokens</h3>
+          <p class="topic-desc">Plans, payments, token balance, and how usage is metered.</p>
+          <span class="topic-meta">View FAQs <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ACCORDION ═══════════ -->
+  <section class="block" style="padding-top:0;">
+    <div class="container">
+      <div class="block-head">
+        <div>
+          <h2>Frequently asked <span class="accent">questions</span></h2>
+          <p>Click any question to expand. Use the search above to filter.</p>
+        </div>
+        <div style="font-size:12px;color:var(--ink-muted);">
+          <span id="faqResultCount"></span>
+        </div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <i class="fas fa-magnifying-glass"></i>
+        <div>No matches for your search. Try a different term, or <a href="/contact" style="color:var(--primary);font-weight:600;">contact support</a>.</div>
+      </div>
+
+      <!-- Getting Started -->
+      <h3 id="cat-getting-started" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Getting started</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="How do I create my learning path? Simply enter the topic, skill, or scenario you want to learn, and XcelUP will generate a personalized learning path for you. You can be as general or as specific as you like — our platform adapts to your input. generate path topic prompt curriculum ai">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Getting started</span>How do I create my learning path?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Simply enter the topic, skill, or scenario you want to learn, and XcelUP will generate a personalized learning path for you. You can be as general or as specific as you like — our platform adapts to your input.</p>
+            <p><strong>Examples of what you can enter:</strong></p>
+            <ul>
+              <li>Introduction to Python programming (for beginners)</li>
+              <li>Advanced financial reporting with SAP S/4HANA (for professionals with ERP experience)</li>
+              <li>How SAP integrates with generative AI platforms (to explore modern, cross-technology skills)</li>
+              <li>Digital marketing strategies for the healthcare industry (to tailor learning to a specific sector)</li>
+              <li>Data visualization best practices using Tableau and Power BI (to focus on tools and techniques)</li>
+              <li>Leadership skills for first-time managers (to build soft skills for career growth)</li>
+            </ul>
+            <p>The more details you provide about your background or goals — such as your current role, target industry, or tools you want to focus on — the more tailored your learning path will be.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="How do XcelUP subscriptions work? XcelUP subscriptions give you ongoing access to all personalized learning features. With a subscription, you can unlock multiple learning paths each month, earn professional credentials, and access exclusive content. You may cancel or upgrade anytime — your progress and completed credentials remain saved. subscription plan billing">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Getting started</span>How do XcelUP subscriptions work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>XcelUP subscriptions give you ongoing access to all personalized learning features. With a subscription, you can unlock multiple learning paths each month, earn professional credentials, and access exclusive content. You may cancel or upgrade anytime — your progress and completed credentials remain saved.</p></div>
+        </div>
+        <div class="faq-item" data-search="What types of credentials can I earn? You can earn industry-recognized certificates, skill badges, and completion credentials. Each credential is designed to highlight practical, job-ready skills and knowledge valued by employers. They can be shared on LinkedIn, added to your résumé, or showcased in your professional portfolio to strengthen your career growth opportunities. credential certificate skill verify">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Getting started</span>What types of credentials can I earn?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>You can earn industry-recognized certificates, skill badges, and completion credentials. Each credential is designed to highlight practical, job-ready skills and knowledge valued by employers. They can be shared on LinkedIn, added to your résumé, or showcased in your professional portfolio to strengthen your career growth opportunities.</p></div>
+        </div>
+      </div>
+
+      <!-- Platform -->
+      <h3 id="cat-platform" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Platform features</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="How does AI personalization work? Our AI analyzes your learning patterns, progress, and preferences to continuously optimize your learning experience. It adjusts content difficulty, suggests relevant materials, and identifies areas where you need additional support. ai personalization adapt">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Platform</span>How does AI personalization work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>Our AI analyzes your learning patterns, progress, and preferences to continuously optimize your learning experience. It adjusts content difficulty, suggests relevant materials, and identifies areas where you need additional support.</p></div>
+        </div>
+        <div class="faq-item" data-search="Can I access XcelUP on mobile devices? Yes! XcelUP is fully responsive and works seamlessly on all devices — desktop, tablet, and mobile. Learn anywhere, anytime, with full synchronization across all your devices. mobile phone tablet access browser">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Platform</span>Can I access XcelUP on mobile devices?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>Yes! XcelUP is fully responsive and works seamlessly on all devices — desktop, tablet, and mobile. Learn anywhere, anytime, with full synchronization across all your devices.</p></div>
+        </div>
+        <div class="faq-item" data-search="How do assessments work? Assessments are integrated throughout your learning journey to measure progress and validate skills. They adapt to your knowledge level and provide immediate feedback to help you improve. quiz assessment test score pass">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Platform</span>How do assessments work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>Assessments are integrated throughout your learning journey to measure progress and validate skills. They adapt to your knowledge level and provide immediate feedback to help you improve.</p></div>
+        </div>
+      </div>
+
+      <!-- Xeva -->
+      <h3 id="cat-xeva" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Xeva AI tutor</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="xeva teach me narrate audio voice">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Xeva</span>What is "Teach Me" and how does it work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Inside any subtopic, click <strong>Teach Me</strong> on the Xeva control bar. Xeva splits the content into logical sections and narrates each one with a natural human voice — auto-advancing between sections so it flows like a single lesson.</p>
+            <p>Use <strong>Pause</strong>/<strong>Resume</strong> at any time. Click <strong>Ask</strong> to speak a question in any of the 20 supported languages — Xeva detects your language automatically and answers in it.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="xeva chatbot ground knowledge sharepoint citations source">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Xeva</span>How does Xeva know about my organization's content?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Xeva is grounded in <strong>your organization's knowledge layer</strong> — your published learning paths, your forum threads, and (where connected) your SharePoint, Drive, or Confluence documents. Generic internet content is never used as a source.</p>
+            <p>Every answer Xeva gives includes the <strong>source documents</strong> it drew from, with clickable links so you can verify in one click.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="xeva language multi-lingual translation hindi english german">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Xeva</span>Which languages does Xeva support?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Xeva supports 20 languages for both written content and voice narration: English, Hindi, Spanish, French, German, Italian, Portuguese, Dutch, Arabic, Chinese, Japanese, Korean, Russian, Turkish, Polish, Vietnamese, Indonesian, Greek, Irish, Swedish, and Hinglish.</p>
+            <p>Switch the language for any learning path using the <strong>language icon</strong> on the title bar — content, quizzes, and Xeva's narration all render in the chosen language.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Talent Intelligence -->
+      <h3 id="cat-talent" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Talent intelligence</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="ai career coach trajectory growth path skills aspiration recommend">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Talent</span>What is the AI Career Coach and how do I use it?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>The <strong>AI Career Coach</strong> turns career conversations into something every employee can have on demand. From your dashboard, open <strong>AI Career Coach</strong> and tell it your aspiration — for example, <em>"Become an EV Service Center Head in 18 months"</em> or <em>"Move from Sales Manager to Regional Director"</em>.</p>
+            <p>The coach analyzes your profile, completed paths, and earned skill credentials, then proposes a <strong>personalized trajectory</strong>: skills to acquire, learning paths to take in what order, and intermediate roles to consider. Every recommendation links straight into your Self-Paced Path queue so you can start immediately.</p>
+            <p>Return monthly — the coach re-evaluates your progress and adapts the plan as you grow.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="resume fit gap analysis upload job description match suitability">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Talent</span>How does Resume Fit work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>From the dashboard, open <strong>Resume Fit</strong> and upload a resume. Paste a target job description, and you get an instant gap analysis: <strong>matched skills</strong>, <strong>missing skills</strong>, a suitability score, and a one-click recommendation to generate a learning path that closes the gap.</p>
+            <p>It's the fastest way to know whether someone is ready for a role — without guesswork.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="role fit catalog compare org employee skills required map">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Talent</span>What's the difference between Resume Fit and Role Fit?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p><strong>Resume Fit</strong> compares <em>one resume</em> against <em>one job description</em> — useful for hiring decisions and individual gap analysis.</p>
+            <p><strong>Role Fit</strong> compares an <em>existing employee profile</em> against a <em>role from your org's catalog</em> — useful for internal mobility, succession planning, and identifying ready-now / ready-soon talent.</p>
+            <p>Both feed into the AI Career Coach's recommendations.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="interview ready mock practice ai feedback prepare promotion behavioral technical">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Talent</span>How does Interview Ready help with promotions and hiring?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Open <strong>Interview Ready</strong> from your dashboard, pick a role and difficulty (e.g., <em>Sales Manager · Behavioral</em>), and respond to AI-generated questions in text or voice. You receive <strong>structured feedback</strong> on each answer — clarity, depth, gaps, and suggested improvements.</p>
+            <p>Review your full interview history to track progress over multiple sessions. It removes the "we just hope they're ready" risk from internal mobility.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trainers -->
+      <h3 id="cat-trainers" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Trainers &amp; classrooms</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="publish learning path organization org-wide visible">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Trainers</span>How do I publish a learning path to my organization?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Open the path you want to publish. In the action bar at the top of the path, click the <strong>Publish</strong> icon (cloud-arrow-up). The path becomes immediately discoverable by every learner in your organization.</p>
+            <p>You can also choose to syndicate it to the <strong>Public / Curator catalogue</strong> so other organizations can discover your expertise.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="schedule classroom session live training trainer date time">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Trainers</span>How do I schedule a live classroom session?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Click the <strong>Schedule</strong> icon (calendar) in the path's action bar. Pick a date, time, timezone, and assign a trainer. The session badge appears directly on the learning path so learners know when to join.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="sharepoint connect drive confluence integrate knowledge ground">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Trainers</span>Can I ground content in my SharePoint or Drive?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Org admins can connect <strong>Microsoft SharePoint</strong>, <strong>Google Drive</strong>, <strong>Confluence</strong>, <strong>Notion</strong>, or upload documents directly. Once connected, every learning path you generate is grounded in those sources, with citation links back to the originals.</p>
+            <p>When source documents update, the connected paths and Xeva's responses <strong>refresh automatically</strong> — no rebuild required.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="export pdf offline compliance archive document">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Trainers</span>How do I export a learning path as a PDF?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Inside any learning path, click the <strong>PDF</strong> icon in the action bar. The entire path — content, structure, and quiz questions — is exported as an offline-ready document. Useful for compliance archives, dealer field kits, or audit reviews.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account -->
+      <h3 id="cat-account" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Account &amp; profile</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="How do I update my profile information? You can update your profile information anytime through your dashboard settings. Changes to your learning preferences will automatically update your personalized learning path. profile name email picture">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Account</span>How do I update my profile information?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>You can update your profile information anytime through your dashboard settings. Changes to your learning preferences will automatically update your personalized learning path.</p></div>
+        </div>
+        <div class="faq-item" data-search="What happens to my data if I cancel? Your learning progress and earned credentials remain accessible for 90 days after cancellation. You can export your certificates and achievement records at any time. cancel delete data privacy">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Account</span>What happens to my data if I cancel?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>Your learning progress and earned credentials remain accessible for 90 days after cancellation. You can export your certificates and achievement records at any time.</p></div>
+        </div>
+        <div class="faq-item" data-search="How do I contact support? You can reach our support team at support@xcelup.com. We typically respond within 24 hours. contact support help email">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Account</span>How do I contact support?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a"><p>You can reach our support team at support@xcelup.com. We typically respond within 24 hours.</p></div>
+        </div>
+      </div>
+
+      <!-- Billing -->
+      <h3 id="cat-billing" style="font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-muted);margin:32px 0 14px;font-weight:700;">Billing &amp; tokens</h3>
+      <div class="faq-list">
+        <div class="faq-item" data-search="token consumption usage balance metering generation">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Billing</span>How does token consumption work?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Tokens are consumed when XcelUP performs AI work on your behalf — generating learning path content, narrating subtopics, transcribing voice questions, and so on. Your current token balance is shown on the dashboard and in the <strong>Token Usage</strong> page.</p>
+            <p>Different actions consume different amounts. Path generation uses the most; using Xeva for chat is comparatively light.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="upgrade plan subscription pricing buy credits">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Billing</span>How do I upgrade my plan or buy more tokens?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Visit <a href="/subscribe-pricing" style="color:var(--primary);font-weight:600;">Subscription Plans</a> from the dashboard or your profile menu. Pick the plan that fits, complete checkout, and your token balance updates immediately.</p>
+            <p>Org admins can manage billing for their entire organization from the <strong>OrgAdmin</strong> console.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-search="invoice receipt download tax">
+          <button class="faq-q" type="button">
+            <span><span class="faq-tag">Billing</span>Where can I download invoices or receipts?</span>
+            <span class="faq-q-icon"><i class="fas fa-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <p>Receipts are emailed to the address on file at the time of purchase. For invoices or tax-formatted receipts, contact <a href="mailto:hello@xcelup.com" style="color:var(--primary);font-weight:600;">hello@xcelup.com</a> with your account email and the date of purchase — we'll send them within one business day.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ STILL NEED HELP ═══════════ -->
+  <section class="block" style="padding-top:0;">
+    <div class="container">
+      <div class="block-head">
+        <div>
+          <h2>Still need <span class="accent">help</span>?</h2>
+          <p>Pick the channel that suits you — we usually respond within one business day.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon" style="background:rgba(180,83,9,.10);color:var(--primary);"><i class="fas fa-envelope"></i></div>
+          <h3 class="contact-title">Email support</h3>
+          <p class="contact-desc">For account, billing, or anything that needs a written record. We aim to reply within 24 hours.</p>
+          <a href="mailto:hello@xcelup.com" class="contact-cta"><i class="fas fa-paper-plane"></i> hello@xcelup.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon" style="background:rgba(99,102,241,.10);color:var(--indigo);"><i class="fas fa-comments"></i></div>
+          <h3 class="contact-title">Send a message</h3>
+          <p class="contact-desc">Use the contact form to send us a structured message about your question, with priority routing.</p>
+          <a href="/contact" class="contact-cta"><i class="fas fa-arrow-right"></i> Open contact form</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon" style="background:rgba(5,150,105,.10);color:var(--success);"><i class="fas fa-users"></i></div>
+          <h3 class="contact-title">Community Forum</h3>
+          <p class="contact-desc">Ask other learners and trainers, browse threads, and share what's working in your team.</p>
+          <a href="/forum" class="contact-cta outline"><i class="fas fa-arrow-right"></i> Visit the forum</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon" style="background:rgba(217,119,6,.10);color:var(--warning);"><i class="fas fa-handshake"></i></div>
+          <h3 class="contact-title">Talk to our team</h3>
+          <p class="contact-desc">For org-wide rollouts, integrations, or pricing questions, schedule a 30-minute strategy call.</p>
+          <a href="mailto:hello@xcelup.com?subject=Strategy%20call%20request" class="contact-cta outline"><i class="fas fa-calendar"></i> Schedule a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RESOURCES STRIP ═══════════ -->
+  <section class="resources">
+    <div class="container">
+      <div class="resource-list">
+        <a href="/about-xcelup"><i class="fas fa-circle-info"></i> About XcelUP</a>
+        <a href="/contact"><i class="fas fa-comment-dots"></i> Contact us</a>
+        <a href="/privacy"><i class="fas fa-shield-halved"></i> Privacy</a>
+        <a href="/terms"><i class="fas fa-file-contract"></i> Terms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATIC FOOTER (paste before </body>) ═══ -->
+<style>
+  .site-foot{background:#1C1917;color:#F5F0EB;padding:3rem 0 1.5rem;font-family:'Bricolage Grotesque',-apple-system,sans-serif;margin-top:4rem}
+  .site-foot-in{max-width:1400px;margin:0 auto;padding:0 2rem}
+  .site-foot-content{display:grid;grid-template-columns:1fr 2fr;gap:3rem;margin-bottom:2rem}
+  .site-foot-brand{display:flex;flex-direction:column;gap:1rem}
+  .site-foot-logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem}
+  .site-foot-logo img{height:2rem;width:2rem;border-radius:8px}
+  .site-foot-brand p{opacity:.5;line-height:1.7;font-size:.88rem;max-width:300px}
+  .site-foot-links{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .site-foot-links h4{font-weight:700;margin-bottom:1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(245,240,235,.4)}
+  .site-foot-links a{display:block;color:rgba(245,240,235,.65);text-decoration:none;margin-bottom:.6rem;font-size:.85rem;font-weight:500;transition:all .2s}
+  .site-foot-links a:hover{color:#F5F0EB;transform:translateX(3px)}
+  .site-foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(245,240,235,.06);font-size:.78rem;color:rgba(245,240,235,.35)}
+  .site-foot-social{display:flex;align-items:center;gap:1rem}
+  .site-foot-social a{display:flex;align-items:center;transition:transform .2s}
+  .site-foot-social a:hover{transform:scale(1.15)}
+  .site-foot-social img{width:25px;height:25px;object-fit:contain}
+  @media(max-width:768px){
+    .site-foot-content{grid-template-columns:1fr;gap:2rem}
+    .site-foot-links{grid-template-columns:1fr 1fr;gap:1.5rem}
+    .site-foot-bottom{flex-direction:column;gap:1rem;text-align:center}
+  }
+</style>
+
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <div class="site-foot-content">
+      <div class="site-foot-brand">
+        <div class="site-foot-logo">
+          <img src="/images/XcelUP.png" alt="XcelUP">
+          <span>XcelUP</span>
+        </div>
+        <p>Accelerating your journey to excellence with AI-powered learning experiences that transform potential into peak performance.</p>
+      </div>
+      <div class="site-foot-links">
+        <div>
+          <h4>Company</h4>
+          <a href="/about-xcelup">About XcelUP</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div>
+  <h4>Support</h4>
+  <a href="/help">Help Center</a>
+  <a href="/contact">Get in Touch</a>
+  <a href="/privacy">Privacy Policy</a>
+  <a href="/terms">Terms &amp; Conditions</a>
+</div>
+        <div>
+          <h4>Connect</h4>
+          <a href="https://www.linkedin.com/company/xcelup-learning/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/goxcelup" target="_blank" rel="noopener">Twitter / X</a>
+          <a href="https://www.instagram.com/goxcelup" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="site-foot-bottom">
+      <p>&copy; 2026 XcelUP. All rights reserved. Accelerating excellence worldwide.</p>
+      <div class="site-foot-social">
+        <a href="https://x.com/goxcelup" target="_blank" rel="noopener" aria-label="Twitter/X"><img src="/images/twitter.png" alt="Twitter"></a>
+        <a href="https://www.linkedin.com/company/xcelup-learning/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/goxcelup" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // ─── FAQ accordion ───
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        // Close siblings (single-open behavior — comment out to allow multiple open)
+        document.querySelectorAll('.faq-item.open').forEach(it => it.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // ─── Search filter ───
+    const searchEl = document.getElementById('helpSearch');
+    const clearBtn = document.getElementById('searchClear');
+    const emptyState = document.getElementById('emptyState');
+    const resultCount = document.getElementById('faqResultCount');
+
+    function applySearch() {
+      const q = (searchEl.value || '').trim().toLowerCase();
+      clearBtn.classList.toggle('show', q.length > 0);
+
+      // Filter FAQs
+      const items = document.querySelectorAll('.faq-item');
+      let visibleCount = 0;
+      items.forEach(item => {
+        const haystack = (item.dataset.search || item.textContent || '').toLowerCase();
+        const match = !q || haystack.includes(q);
+        item.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+        // Auto-open the first match for fast access
+        item.classList.toggle('open', !!q && match && visibleCount === 1);
+      });
+
+      // Hide section headers whose section has no visible items
+      document.querySelectorAll('.faq-list').forEach(list => {
+        const anyVisible = Array.from(list.querySelectorAll('.faq-item')).some(it => it.style.display !== 'none');
+        list.style.display = anyVisible ? '' : 'none';
+        const heading = list.previousElementSibling;
+        if (heading && heading.tagName === 'H3') heading.style.display = anyVisible ? '' : 'none';
+      });
+
+      // Filter quick cards too
+      document.querySelectorAll('#quickGrid .quick-card').forEach(card => {
+        const haystack = (card.dataset.search || '').toLowerCase() + ' ' + card.textContent.toLowerCase();
+        card.style.display = (!q || haystack.includes(q)) ? '' : 'none';
+      });
+
+      // Empty state
+      if (q && visibleCount === 0) {
+        emptyState.classList.add('show');
+        resultCount.textContent = '';
+      } else {
+        emptyState.classList.remove('show');
+        resultCount.textContent = q ? (visibleCount + ' result' + (visibleCount === 1 ? '' : 's')) : '';
+      }
+    }
+
+    searchEl.addEventListener('input', applySearch);
+    clearBtn.addEventListener('click', () => { searchEl.value = ''; searchEl.focus(); applySearch(); });
+
+    // Suggestion chips
+    document.querySelectorAll('.search-suggestions a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        searchEl.value = a.dataset.suggest || a.textContent;
+        applySearch();
+        searchEl.focus();
+      });
+    });
+
+    // ─── Topic card → smooth scroll to FAQ section ───
+    document.querySelectorAll('.topic-card[data-jump]').forEach(card => {
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById(card.dataset.jump);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ESC clears search
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && document.activeElement === searchEl) {
+        searchEl.value = ''; applySearch();
+      }
+    });
+  </script>
+</body>
+</html>

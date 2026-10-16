@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - XcelUP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    ::selection { background: #FEF3C7; color: #1C1917; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(168,162,158,.3); border-radius: 3px; }
+    html { scrollbar-width: thin; scrollbar-color: rgba(168,162,158,.3) transparent; }
+
+    body {
+      font-family: 'Bricolage Grotesque', -apple-system, sans-serif;
+      background: #F5F0EB;
+      color: #1C1917;
+      min-height: 100vh;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+    }
+
+    /* Hero */
+    .contact-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 0 1rem;
+    }
+    .contact-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      background: rgba(180,83,9,.06);
+      border: 1px solid rgba(180,83,9,.12);
+      border-radius: 999px;
+      font-size: .65rem;
+      font-weight: 700;
+      color: #B45309;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .contact-hero h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #1C1917;
+      margin-bottom: .4rem;
+    }
+    .contact-hero p {
+      font-size: .9rem;
+      color: #78716C;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Contact cards */
+    .contact-info h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #FFFFFF;
+      border: 1px solid rgba(28,25,23,.06);
+      border-radius: 12px;
+      transition: all .2s;
+    }
+    .contact-card:hover {
+      border-color: rgba(180,83,9,.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+      transform: translateY(-1px);
+    }
+    .contact-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .contact-card h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #1C1917;
+    }
+    .contact-card p {
+      font-size: .78rem;
+      color: #78716C;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .contact-card a {
+      font-size: .78rem;
+      color: #B45309;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* Form */
+    .contact-form-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(28,25,23,.06);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .contact-form-card h3 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #1C1917;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #E7E1D9;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: .85rem;
+      color: #1C1917;
+      background: #FAFAF9;
+      transition: all .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(180,83,9,.4);
+      box-shadow: 0 0 0 3px rgba(180,83,9,.06);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 10px 24px;
+      background: #1C1917;
+      color: #F5F0EB;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .25s;
+      box-shadow: 0 2px 8px rgba(28,25,23,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .form-submit:hover {
+      background: #292524;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(28,25,23,.18);
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .form-success i {
+      font-size: 2rem;
+      color: #059669;
+      margin-bottom: .75rem;
+    }
+    .form-success h4 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.1rem;
+      margin-bottom: .3rem;
+    }
+    .form-success p { font-size: .82rem; color: #78716C; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-container { padding: 1.5rem 1.25rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ STATIC HEADER (paste after <body>) ═══ -->
+<style>
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,235,.92);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border-bottom:1px solid rgba(28,25,23,.08);font-family:'Bricolage Grotesque',-apple-system,sans-serif}
+  .site-nav-in{max-width:1320px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .site-nav-brand{display:flex;align-items:center;gap:10px;color:#1C1917;text-decoration:none}
+  .site-nav-brand img{height:30px;width:30px;border-radius:8px}
+  .site-nav-logo{display:flex;flex-direction:column;gap:1px}
+  .site-nav-logo .name{font-weight:700;font-size:15px;color:#1C1917;display:flex;align-items:center;gap:8px}
+  .site-nav-logo .patent{font-size:10px;color:#A8A29E;font-weight:500}
+  .site-nav-logo .tag{font-size:10px;font-weight:600;color:#78716C;line-height:1.2;white-space:nowrap}
+  .site-nav-links{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600}
+  .site-nav-links a{color:#78716C;padding:7px 14px;border-radius:8px;text-decoration:none;transition:all .2s}
+  .site-nav-links a:hover{color:#1C1917;background:rgba(28,25,23,.04)}
+  .site-nav-cta{padding:8px 16px !important;border-radius:8px;background:#1C1917;color:#fff !important;transition:all .2s}
+  .site-nav-cta:hover{background:#292524 !important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+  .site-nav-burger{display:none;background:none;border:none;font-size:22px;color:#1C1917;cursor:pointer;padding:6px}
+  @media(max-width:768px){
+    .site-nav-logo .tag{display:none}
+    .site-nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:#F5F0EB;flex-direction:column;padding:20px;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.1);border-top:1px solid rgba(28,25,23,.08)}
+    .site-nav-links.open{display:flex}
+    .site-nav-links a{width:100%;padding:12px 14px;text-align:left}
+    .site-nav-burger{display:block}
+  }
+</style>
+
+<nav class="site-nav">
+  <div class="site-nav-in">
+    <a href="/" class="site-nav-brand">
+      <img src="/images/XcelUP.png" alt="XcelUP logo">
+      <div class="site-nav-logo">
+        <span class="name">XcelUP <span class="patent">Patent Pending</span></span>
+        <span class="tag">Innovation is no longer the bottleneck. Adoption is.&trade;</span>
+      </div>
+    </a>
+    <div class="site-nav-links" id="siteNavLinks">
+      <a href="/about-xcelup">About</a>
+      <a href="/careers">Careers</a>
+      <a href="/help">Help</a>
+      <a href="/contact" class="site-nav-cta">Request a Demo</a>
+    </div>
+    <button class="site-nav-burger" onclick="document.getElementById('siteNavLinks').classList.toggle('open')" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+<!-- Spacer so content doesn't hide under fixed nav -->
+<div style="height:60px"></div>
+
+<div class="contact-container">
+
+  <!-- Hero -->
+  <div class="contact-hero">
+    <div class="contact-hero-badge">
+      <i class="fas fa-envelope" style="font-size:10px;"></i> CONNECT WITH US
+    </div>
+    <h1>Apply for the XcelUP Pilot or Get in Touch</h1>
+    <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+  </div>
+
+  <!-- Grid -->
+  <div class="contact-grid">
+
+    <!-- Left — Contact Info -->
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="contact-cards">
+
+        <div class="contact-card">
+          <div class="contact-card-icon" style="background:linear-gradient(135deg,#B45309,#D97706);">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4>Email Us</h4>
+            <p>General inquiries</p>
+            <a href="mailto:hello@xcelup.com">hello@xcelup.com</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon" style="background:linear-gradient(135deg,#6366F1,#818CF8);">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div>
+            <h4>Business Partnerships</h4>
+            <p>Enterprise &amp; institutional inquiries</p>
+            <a href="mailto:partnerships@xcelup.com">partnerships@xcelup.com</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon" style="background:linear-gradient(135deg,#059669,#10B981);">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div>
+            <h4>Technical Support</h4>
+            <p>Platform assistance &amp; bug reports</p>
+            <a href="mailto:support@xcelup.com">support@xcelup.com</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right — Form -->
+   <div class="contact-form-card">
+  <h3>Send Us a Message</h3>
+
+  <p style="font-size:.85rem; color:#78716C; margin-bottom:1.25rem;">
+    Have a question or want to apply for the XcelUP Pilot?
+    Send us an email and we'll get back to you.
+  </p>
+
+  <a href="mailto:hello@xcelup.com?subject=Inquiry%20from%20XcelUP%20site"
+     class="form-submit"
+     style="text-decoration:none; display:inline-flex;">
+    <i class="fas fa-envelope"></i>
+    Email Us
+  </a>
+</div>
+
+  </div>
+</div>
+
+
+<!-- ═══ STATIC FOOTER (paste before </body>) ═══ -->
+<style>
+  .site-foot{background:#1C1917;color:#F5F0EB;padding:3rem 0 1.5rem;font-family:'Bricolage Grotesque',-apple-system,sans-serif;margin-top:4rem}
+  .site-foot-in{max-width:1400px;margin:0 auto;padding:0 2rem}
+  .site-foot-content{display:grid;grid-template-columns:1fr 2fr;gap:3rem;margin-bottom:2rem}
+  .site-foot-brand{display:flex;flex-direction:column;gap:1rem}
+  .site-foot-logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem}
+  .site-foot-logo img{height:2rem;width:2rem;border-radius:8px}
+  .site-foot-brand p{opacity:.5;line-height:1.7;font-size:.88rem;max-width:300px}
+  .site-foot-links{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .site-foot-links h4{font-weight:700;margin-bottom:1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(245,240,235,.4)}
+  .site-foot-links a{display:block;color:rgba(245,240,235,.65);text-decoration:none;margin-bottom:.6rem;font-size:.85rem;font-weight:500;transition:all .2s}
+  .site-foot-links a:hover{color:#F5F0EB;transform:translateX(3px)}
+  .site-foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(245,240,235,.06);font-size:.78rem;color:rgba(245,240,235,.35)}
+  .site-foot-social{display:flex;align-items:center;gap:1rem}
+  .site-foot-social a{display:flex;align-items:center;transition:transform .2s}
+  .site-foot-social a:hover{transform:scale(1.15)}
+  .site-foot-social img{width:25px;height:25px;object-fit:contain}
+  @media(max-width:768px){
+    .site-foot-content{grid-template-columns:1fr;gap:2rem}
+    .site-foot-links{grid-template-columns:1fr 1fr;gap:1.5rem}
+    .site-foot-bottom{flex-direction:column;gap:1rem;text-align:center}
+  }
+</style>
+
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <div class="site-foot-content">
+      <div class="site-foot-brand">
+        <div class="site-foot-logo">
+          <img src="/images/XcelUP.png" alt="XcelUP">
+          <span>XcelUP</span>
+        </div>
+        <p>Accelerating your journey to excellence with AI-powered learning experiences that transform potential into peak performance.</p>
+      </div>
+      <div class="site-foot-links">
+        <div>
+          <h4>Company</h4>
+          <a href="/about-xcelup">About XcelUP</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div>
+  <h4>Support</h4>
+  <a href="/help">Help Center</a>
+  <a href="/contact">Get in Touch</a>
+  <a href="/privacy">Privacy Policy</a>
+  <a href="/terms">Terms &amp; Conditions</a>
+</div>
+        <div>
+          <h4>Connect</h4>
+          <a href="https://www.linkedin.com/company/xcelup-learning/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/goxcelup" target="_blank" rel="noopener">Twitter / X</a>
+          <a href="https://www.instagram.com/goxcelup" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="site-foot-bottom">
+      <p>&copy; 2026 XcelUP. All rights reserved. Accelerating excellence worldwide.</p>
+      <div class="site-foot-social">
+        <a href="https://x.com/goxcelup" target="_blank" rel="noopener" aria-label="Twitter/X"><img src="/images/twitter.png" alt="Twitter"></a>
+        <a href="https://www.linkedin.com/company/xcelup-learning/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/goxcelup" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

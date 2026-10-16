@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About XcelUP — Human Learning at the Speed of AI</title>
+  <meta name="description" content="XcelUP is the learning platform built to match the speed of human learning to the speed of AI-driven innovation.">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/css/header-standard.css">
+  <link rel="stylesheet" href="/css/responsive-standard.css">
+  <style>
+    :root {
+      --bg: #F5F0EB; --dark: #1C1917; --muted: #78716C; --border: #E7E1D9;
+      --primary: #B45309; --accent2: #059669;
+      --ease: cubic-bezier(.22,.61,.36,1);
+    }
+    body { font-family: 'Bricolage Grotesque', sans-serif; margin: 0; background: var(--bg); color: var(--dark); overflow-x: hidden; }
+    body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E"); background-size:200px; }
+    ::selection { background: #FEF3C7; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: rgba(180,83,9,.15); border-radius: 3px; }
+
+    /* Scroll progress */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--primary), #F59E0B); z-index: 1200; will-change: transform; }
+
+    /* Mission — opens the page */
+    .mission { max-width: 900px; margin: 0 auto; padding: 6.5rem 2rem 5.5rem; text-align: center; position: relative; z-index: 1; }
+    .hero-glow { position: absolute; top: -18%; left: 50%; width: 900px; height: 560px; transform: translateX(-50%); pointer-events: none; z-index: -1;
+      background: radial-gradient(closest-side, rgba(180,83,9,.10), rgba(180,83,9,0) 70%); filter: blur(10px); animation: drift 16s ease-in-out infinite; }
+    @keyframes drift {
+      0%,100% { transform: translateX(-50%) translateY(0) scale(1); opacity: .9; }
+      50%     { transform: translateX(-46%) translateY(18px) scale(1.06); opacity: 1; }
+    }
+    .label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--primary); margin-bottom: 24px; }
+    .statement { font-family: 'Newsreader', serif; font-size: 3rem; font-weight: 600; line-height: 1.24; letter-spacing: -.02em; margin: 0 auto 36px; max-width: 860px; }
+    .statement .rule { width: 46px; height: 2px; background: var(--primary); opacity: .35; margin: 0 auto 30px; transform: scaleX(0); transform-origin: 50%; transition: transform 1s var(--ease); }
+    .statement.lit .rule { transform: scaleX(1); }
+    .statement .line { display: block; color: var(--dark); }
+    .statement .line.accent { color: var(--primary); font-style: italic; }
+    .statement .w { display: inline-block; opacity: .15; transition: opacity .35s linear; }
+    .mission-note { font-size: 1.02rem; color: var(--muted); line-height: 1.85; max-width: 640px; margin: 0 auto; }
+
+    .divider { height: 1px; max-width: 1080px; margin: 0 auto; background: linear-gradient(90deg, transparent, var(--border) 18%, var(--border) 82%, transparent); }
+
+    /* Leadership — full width, given room */
+    .team-section { max-width: 1080px; margin: 0 auto; padding: 5.5rem 2rem 2rem; position: relative; z-index: 1; }
+    .team-head { text-align: center; margin-bottom: 4rem; }
+    .team-title { font-family: 'Newsreader', serif; font-size: 2.4rem; font-weight: 700; margin: 0 0 16px; line-height: 1.18; letter-spacing: -.015em; }
+    .team-title em { font-style: italic; color: var(--primary); }
+    .team-intro { color: var(--muted); line-height: 1.75; font-size: 1rem; margin: 0 auto; max-width: 560px; }
+
+    .leader { display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: center; background: white; border: 1px solid var(--border); border-radius: 22px; padding: 34px; margin-bottom: 28px;
+      box-shadow: 0 22px 55px -45px rgba(28,25,23,.55); transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease); }
+    .leader:hover { transform: translateY(-5px); box-shadow: 0 32px 66px -40px rgba(28,25,23,.5); border-color: rgba(180,83,9,.26); }
+    .leader:last-child { margin-bottom: 0; }
+    .leader-figure { position: relative; overflow: hidden; border-radius: 16px; background: var(--border); }
+    .leader-photo { display: block; width: 100%; height: 234px; object-fit: cover; object-position: center top; transition: transform .8s var(--ease); }
+    .leader:hover .leader-photo { transform: scale(1.05); }
+    .leader-name { font-family: 'Newsreader', serif; font-size: 1.85rem; font-weight: 700; margin: 0 0 12px; line-height: 1.15; letter-spacing: -.015em; }
+    .leader-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    .leader-role { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--primary); background: rgba(180,83,9,.07); border: 1px solid rgba(180,83,9,.16); padding: 6px 12px; border-radius: 20px; }
+    .leader-loc { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+    .leader-loc i { font-size: 10px; color: var(--primary); opacity: .85; }
+    .leader-bio { color: var(--muted); font-size: 1rem; line-height: 1.8; margin: 0; max-width: 620px; }
+
+    /* CTA */
+    .cta-section { text-align: center; padding: 5rem 2rem; position: relative; z-index: 1; }
+    .cta-section h2 { font-family: 'Newsreader', serif; font-size: 2rem; margin: 0 0 14px; line-height: 1.22; letter-spacing: -.01em; }
+    .cta-section h2 em { font-style: italic; color: var(--primary); }
+    .cta-section p { color: var(--muted); max-width: 500px; margin: 0 auto 26px; font-size: .95rem; line-height: 1.7; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 9px; background: var(--dark); color: white; padding: 13px 26px; border-radius: 11px; font-weight: 700; font-size: .88rem; text-decoration: none; font-family: inherit; border: none; cursor: pointer;
+      transition: background .3s ease, transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .cta-btn:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 14px 28px -16px rgba(180,83,9,.8); }
+    .cta-btn i { transition: transform .3s var(--ease); }
+    .cta-btn:hover i { transform: translateX(2px); }
+    .cta-btn-outline { background: transparent; color: var(--dark); border: 1px solid var(--border); margin-left: 8px; }
+    .cta-btn-outline:hover { border-color: var(--primary); color: var(--primary); background: transparent; box-shadow: none; }
+
+    /* Reveal on scroll — only when motion is enabled (content stays visible if JS is off) */
+    .motion [data-reveal] { opacity: 0; transform: translateY(28px); }
+    .motion [data-reveal].in { opacity: 1; transform: none; transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0ms); }
+    .motion [data-reveal="scale"] { transform: translateY(22px) scale(.98); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-glow { animation: none; }
+      .statement .w { opacity: 1 !important; }
+      .leader:hover .leader-photo { transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .leader { grid-template-columns: 168px 1fr; gap: 30px; padding: 28px; }
+      .leader-photo { height: 208px; }
+      .leader-name { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-glow { width: 520px; }
+      .mission { padding: 3.5rem 1.5rem 3.5rem; }
+      .statement { font-size: 1.85rem; }
+      .team-section { padding: 3.5rem 1.5rem 1rem; }
+      .team-head { margin-bottom: 2.5rem; }
+      .team-title { font-size: 1.75rem; }
+      .leader { grid-template-columns: 1fr; gap: 22px; padding: 26px; margin-bottom: 20px; }
+      .leader-figure { max-width: 190px; }
+      .leader-photo { height: 234px; }
+      .cta-section { padding: 3.5rem 1.5rem; }
+      .cta-section h2 { font-size: 1.6rem; }
+      .cta-btn-outline { margin-left: 0; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<!-- ═══ STATIC HEADER (paste after <body>) ═══ -->
+<style>
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,235,.92);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border-bottom:1px solid rgba(28,25,23,.08);font-family:'Bricolage Grotesque',-apple-system,sans-serif}
+  .site-nav-in{max-width:1320px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .site-nav-brand{display:flex;align-items:center;gap:10px;color:#1C1917;text-decoration:none}
+  .site-nav-brand img{height:30px;width:30px;border-radius:8px}
+  .site-nav-logo{display:flex;flex-direction:column;gap:1px}
+  .site-nav-logo .name{font-weight:700;font-size:15px;color:#1C1917;display:flex;align-items:center;gap:8px}
+  .site-nav-logo .patent{font-size:10px;color:#A8A29E;font-weight:500}
+  .site-nav-logo .tag{font-size:10px;font-weight:600;color:#78716C;line-height:1.2;white-space:nowrap}
+  .site-nav-links{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600}
+  .site-nav-links a{color:#78716C;padding:7px 14px;border-radius:8px;text-decoration:none;transition:all .2s}
+  .site-nav-links a:hover{color:#1C1917;background:rgba(28,25,23,.04)}
+  .site-nav-cta{padding:8px 16px !important;border-radius:8px;background:#1C1917;color:#fff !important;transition:all .2s}
+  .site-nav-cta:hover{background:#292524 !important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+  .site-nav-burger{display:none;background:none;border:none;font-size:22px;color:#1C1917;cursor:pointer;padding:6px}
+  @media(max-width:768px){
+    .site-nav-logo .tag{display:none}
+    .site-nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:#F5F0EB;flex-direction:column;padding:20px;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.1);border-top:1px solid rgba(28,25,23,.08)}
+    .site-nav-links.open{display:flex}
+    .site-nav-links a{width:100%;padding:12px 14px;text-align:left}
+    .site-nav-burger{display:block}
+  }
+</style>
+
+<nav class="site-nav">
+  <div class="site-nav-in">
+    <a href="/" class="site-nav-brand">
+      <img src="/images/XcelUP.png" alt="XcelUP logo">
+      <div class="site-nav-logo">
+        <span class="name">XcelUP <span class="patent">Patent Pending</span></span>
+        <span class="tag">Innovation is no longer the bottleneck. Adoption is.&trade;</span>
+      </div>
+    </a>
+    <div class="site-nav-links" id="siteNavLinks">
+      <a href="/about-xcelup">About</a>
+      <a href="/careers">Careers</a>
+      <a href="/help">Help</a>
+      <a href="/contact" class="site-nav-cta">Request a Demo</a>
+    </div>
+    <button class="site-nav-burger" onclick="document.getElementById('siteNavLinks').classList.toggle('open')" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+<!-- Spacer so content doesn't hide under fixed nav -->
+<div style="height:60px"></div>
+
+<!-- Mission -->
+<div class="mission">
+  <div class="hero-glow"></div>
+  <div class="label" data-reveal>Our Mission</div>
+
+  <div class="statement" id="statement">
+    <div class="rule"></div>
+    <span class="line">AI set the pace of innovation.</span>
+    <span class="line accent">We set the pace of human learning.</span>
+  </div>
+
+  <p class="mission-note" data-reveal>XcelUP is built on one conviction: an organization can only move as fast as its people are ready to move. Every company already holds what its workforce needs to learn — in its documents, its processes, and the expertise of its people. We turn that knowledge into learning that keeps employees ready for the technology reshaping their work.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- Leadership -->
+<div class="team-section">
+  <div class="team-head">
+    <div class="label" data-reveal>Our Team</div>
+    <h2 class="team-title" data-reveal style="--d:80ms">The people behind <em>XcelUP</em></h2>
+    <p class="team-intro" data-reveal style="--d:160ms">A passionate team spanning the globe, united by one goal: helping organizations keep their people ready for what comes next.</p>
+  </div>
+
+  <div class="leader" data-reveal="scale">
+    <div class="leader-figure">
+      <img class="leader-photo" src="/images/Pranav.jpeg"
+           alt="Pranav M, Chief Operating Officer at XcelUP"
+           width="232" height="286" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <h3 class="leader-name">Pranav M</h3>
+      <div class="leader-meta">
+        <span class="leader-role">Chief Operating Officer</span>
+        <span class="leader-loc"><i class="fas fa-location-dot"></i> Chicago, USA</span>
+      </div>
+      <p class="leader-bio">Oversees operations, client partnerships, and market strategy at XcelUP, ensuring enterprise workforce priorities help shape the product and business direction.</p>
+    </div>
+  </div>
+
+  <div class="leader" data-reveal="scale">
+    <div class="leader-figure">
+      <img class="leader-photo" src="/images/Tapan.jpeg"
+           alt="Tapan D, Head of Technology at XcelUP"
+           width="232" height="286" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <h3 class="leader-name">Tapan D</h3>
+      <div class="leader-meta">
+        <span class="leader-role">Head of Technology</span>
+        <span class="leader-loc"><i class="fas fa-location-dot"></i> India</span>
+      </div>
+      <p class="leader-bio">Leads engineering and architecture at XcelUP, building enterprise-grade AI and learning systems designed for scale, performance, and security.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2 data-reveal>Your organization already has the knowledge.<br><em>Put it to work.</em></h2>
+  <p data-reveal style="--d:100ms">XcelUP turns the knowledge inside your organization into learning your people can access, understand, and apply — so they're ready for what comes next.</p>
+  <div data-reveal style="--d:200ms">
+    <a href="/contact" class="cta-btn">See XcelUP in Action <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<!-- Footer partial include removed — add your footer HTML here -->
+
+<script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) document.documentElement.classList.add('motion');
+
+  /* 1. Reveal on scroll */
+  var revealables = document.querySelectorAll('[data-reveal]');
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    revealables.forEach(function (el) { io.observe(el); });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* 2. Split the mission statement into words so they light up with scroll */
+  var stmt = document.getElementById('statement');
+  var words = [];
+  if (stmt) {
+    stmt.querySelectorAll('.line').forEach(function (line) {
+      var frag = document.createDocumentFragment();
+      line.textContent.trim().split(/\s+/).forEach(function (w, i, arr) {
+        var s = document.createElement('span');
+        s.className = 'w';
+        s.textContent = w;
+        frag.appendChild(s);
+        if (i < arr.length - 1) frag.appendChild(document.createTextNode(' '));
+        words.push(s);
+      });
+      line.textContent = '';
+      line.appendChild(frag);
+    });
+    if (reduced) { stmt.classList.add('lit'); words.forEach(function (w) { w.style.opacity = 1; }); }
+  }
+
+  /* The statement now opens the page, so if it is already on screen at load
+     it lights on a timer — there is no scroll distance to drive it. */
+  var autoLit = false;
+  if (stmt && words.length && !reduced && stmt.getBoundingClientRect().top < window.innerHeight * 0.8) {
+    autoLit = true;
+    stmt.classList.add('lit');
+    words.forEach(function (w, i) {
+      setTimeout(function () { w.style.opacity = 1; }, 300 + i * 80);
+    });
+  }
+
+  /* 3. Scroll-driven work: progress bar + statement lighting */
+  var bar = document.getElementById('progress');
+  var ticking = false;
+
+  function frame() {
+    ticking = false;
+    var vh = window.innerHeight;
+
+    if (bar) {
+      var h = document.documentElement.scrollHeight - vh;
+      bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(window.scrollY / h, 1) : 0) + ')';
+    }
+
+    if (stmt && words.length && !reduced && !autoLit) {
+      var r = stmt.getBoundingClientRect();
+      var p = (vh * 0.9 - r.top) / (vh * 0.5);
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      if (p > 0.02) stmt.classList.add('lit');
+      var span = words.length + 2;
+      words.forEach(function (w, i) {
+        var t = p * span - i;
+        t = t < 0 ? 0 : t > 1 ? 1 : t;
+        w.style.opacity = (0.15 + 0.85 * t).toFixed(3);
+      });
+    }
+  }
+
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  frame();
+})();
+</script>
+</body>
+</html>
