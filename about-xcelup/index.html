@@ -113,32 +113,46 @@
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<!-- ═══ STATIC HEADER (paste after <body>) ═══ -->
+
+<!-- ═══ STATIC HEADER WITH SCROLL LINKS + BACK BUTTON (sub-pages only) ═══ -->
 <style>
-  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,235,.92);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border-bottom:1px solid rgba(28,25,23,.08);font-family:'Bricolage Grotesque',-apple-system,sans-serif}
-  .site-nav-in{max-width:1320px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-  .site-nav-brand{display:flex;align-items:center;gap:10px;color:#1C1917;text-decoration:none}
-  .site-nav-brand img{height:30px;width:30px;border-radius:8px}
-  .site-nav-logo{display:flex;flex-direction:column;gap:1px}
-  .site-nav-logo .name{font-weight:700;font-size:15px;color:#1C1917;display:flex;align-items:center;gap:8px}
+  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg,#F5F0EB);border-bottom:1px solid rgba(28,25,23,.08);font-family:'Bricolage Grotesque',-apple-system,sans-serif;transition:all .35s cubic-bezier(.22,1,.36,1)}
+  .site-nav.scrolled{background:rgba(245,240,235,.82);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border-bottom-color:rgba(28,25,23,.18)}
+  .site-nav-in{max-width:1320px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;gap:4px}
+.site-nav-brand{margin-right:auto}
+  .site-nav-brand{display:flex;align-items:center;gap:8px;color:#1C1917;text-decoration:none;flex-shrink:0;font-weight:700;font-size:15px}
+  .site-nav-brand img{height:28px;width:28px;border-radius:8px}
+  .site-nav-logo{display:flex;flex-direction:column;justify-content:center;gap:1px}
+  .site-nav-logo .name{display:flex;align-items:center;gap:8px}
   .site-nav-logo .patent{font-size:10px;color:#A8A29E;font-weight:500}
-  .site-nav-logo .tag{font-size:10px;font-weight:600;color:#78716C;line-height:1.2;white-space:nowrap}
-  .site-nav-links{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600}
-  .site-nav-links a{color:#78716C;padding:7px 14px;border-radius:8px;text-decoration:none;transition:all .2s}
-  .site-nav-links a:hover{color:#1C1917;background:rgba(28,25,23,.04)}
-  .site-nav-cta{padding:8px 16px !important;border-radius:8px;background:#1C1917;color:#fff !important;transition:all .2s}
-  .site-nav-cta:hover{background:#292524 !important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
-  .site-nav-burger{display:none;background:none;border:none;font-size:22px;color:#1C1917;cursor:pointer;padding:6px}
-  @media(max-width:768px){
+  .site-nav-logo .tag{font-size:10px;font-weight:600;color:#78716C;line-height:1.2;letter-spacing:.1px;white-space:nowrap}
+  .site-nav-mid{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600}
+  .site-nav-mid a{color:#78716C;padding:6px 12px;border-radius:8px;border:1px solid transparent;text-decoration:none;transition:all .2s cubic-bezier(.22,1,.36,1);white-space:nowrap}
+  .site-nav-mid a:hover{color:#1C1917;border-color:rgba(28,25,23,.08);background:rgba(28,25,23,.02)}
+  .site-nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0;font-size:12px;font-weight:600}
+  .site-nav-back{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;border:1px solid rgba(28,25,23,.08);color:#78716C;background:transparent;text-decoration:none;transition:all .2s cubic-bezier(.22,1,.36,1);font-family:inherit;cursor:pointer;font-size:12px;font-weight:600}
+  .site-nav-back:hover{color:#1C1917;border-color:rgba(28,25,23,.18);background:rgba(28,25,23,.02)}
+  .site-nav-back i{font-size:10px}
+  .site-nav-cta{padding:6px 14px;border-radius:8px;border:none;font-size:12px;font-weight:600;color:#fff;background:#1C1917;text-decoration:none;transition:all .2s cubic-bezier(.22,1,.36,1);box-shadow:0 2px 6px rgba(28,25,23,.12)}
+  .site-nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+  .site-nav-burger{display:none;background:none;border:none;font-size:1.25rem;color:#1C1917;cursor:pointer;padding:.5rem;border-radius:8px}
+  @media(max-width:900px){
+    .site-nav-in{padding:0 24px}
     .site-nav-logo .tag{display:none}
-    .site-nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:#F5F0EB;flex-direction:column;padding:20px;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.1);border-top:1px solid rgba(28,25,23,.08)}
-    .site-nav-links.open{display:flex}
-    .site-nav-links a{width:100%;padding:12px 14px;text-align:left}
+    .site-nav-mid{display:none}
+    .site-nav-right{display:none}
+    .site-nav-mobile{display:none;position:absolute;top:56px;left:0;right:0;background:#F5F0EB;flex-direction:column;padding:24px;gap:16px;box-shadow:0 16px 48px rgba(0,0,0,.1);border-top:1px solid rgba(28,25,23,.08);border-radius:0 0 16px 16px}
+    .site-nav-mobile.open{display:flex}
+    .site-nav-mobile a{color:#78716C;padding:8px 12px;text-decoration:none;font-size:13px;font-weight:600;border-radius:8px}
+    .site-nav-mobile a:hover{color:#1C1917;background:rgba(28,25,23,.04)}
+    .site-nav-mobile .site-nav-cta{background:#1C1917;color:#fff !important;text-align:center;box-shadow:0 2px 6px rgba(28,25,23,.12)}
     .site-nav-burger{display:block}
   }
+  @media(min-width:901px){.site-nav-mobile{display:none !important}}
+  @media(max-width:640px){.site-nav-logo .tag{display:none}}
 </style>
 
-<nav class="site-nav">
+<nav class="site-nav" id="siteNav">
   <div class="site-nav-in">
     <a href="/" class="site-nav-brand">
       <img src="/images/XcelUP.png" alt="XcelUP logo">
@@ -147,19 +161,59 @@
         <span class="tag">Innovation is no longer the bottleneck. Adoption is.&trade;</span>
       </div>
     </a>
-    <div class="site-nav-links" id="siteNavLinks">
+
+    <div class="site-nav-mid">
+      <a href="/#problem">Why XcelUP</a>
+      <a href="/#xeva">Xeva AI</a>
+      <a href="/#how-it-works">How It Works</a>
       <a href="/about-xcelup">About</a>
       <a href="/careers">Careers</a>
       <a href="/help">Help</a>
+    </div>
+
+    <div class="site-nav-right">
+      <a href="/" class="site-nav-back" title="Back to home">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
       <a href="/contact" class="site-nav-cta">Request a Demo</a>
     </div>
-    <button class="site-nav-burger" onclick="document.getElementById('siteNavLinks').classList.toggle('open')" aria-label="Menu">
+
+    <button class="site-nav-burger" onclick="document.getElementById('siteNavMobile').classList.toggle('open')" aria-label="Menu">
       <i class="fas fa-bars"></i>
     </button>
   </div>
+
+  <div class="site-nav-mobile" id="siteNavMobile">
+    <a href="/#problem">Why XcelUP</a>
+    <a href="/#xeva">Xeva AI</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="/about-xcelup">About</a>
+    <a href="/careers">Careers</a>
+    <a href="/help">Help</a>
+    <a href="/" class="site-nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <a href="/contact" class="site-nav-cta">Request a Demo</a>
+  </div>
 </nav>
 <!-- Spacer so content doesn't hide under fixed nav -->
-<div style="height:60px"></div>
+<div style="height:56px"></div>
+
+<script>
+(function(){
+  var nav=document.getElementById('siteNav');
+  if(!nav)return;
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){
+        if(window.scrollY>50)nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+        ticking=false;
+      });
+      ticking=true;
+    }
+  });
+})();
+</script>
 
 <!-- Mission -->
 <div class="mission">
@@ -228,7 +282,7 @@
   </div>
 </div>
 
-<!-- ═══ STATIC FOOTER (paste before </body>) ═══ -->
+
 <style>
   .site-foot{background:#1C1917;color:#F5F0EB;padding:3rem 0 1.5rem;font-family:'Bricolage Grotesque',-apple-system,sans-serif;margin-top:4rem}
   .site-foot-in{max-width:1400px;margin:0 auto;padding:0 2rem}
@@ -272,10 +326,8 @@
         </div>
         <div>
   <h4>Support</h4>
-  <a href="/help">Help Center</a>
+  <!-- <a href="/help">Help Center</a> -->
   <a href="/contact">Get in Touch</a>
-  <a href="/privacy">Privacy Policy</a>
-  <a href="/terms">Terms &amp; Conditions</a>
 </div>
       
       </div>
